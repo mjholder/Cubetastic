@@ -246,23 +246,23 @@ MonoBehaviour:
   - pattern: {fileID: 5941617804622513739, guid: 51278b1f717ae4d45921005a159e577f, type: 3}
     placeMin: -7
     placeMax: 7
-    cooldown: 20
+    leadDistance: 10
   - pattern: {fileID: 5626931271352563180, guid: 5db46a21deb12c845a23c5a953ce07b2, type: 3}
     placeMin: -4
     placeMax: 5
-    cooldown: 20
+    leadDistance: 40
   - pattern: {fileID: 5330988868055817395, guid: 0a757a88f01883a4f86808a05c7d7cd2, type: 3}
     placeMin: -5
     placeMax: 4
-    cooldown: 20
+    leadDistance: 40
   - pattern: {fileID: 75556303081020949, guid: a6adeceaedc65c546a06b378c8b76239, type: 3}
     placeMin: -5
     placeMax: 5
-    cooldown: 20
+    leadDistance: 50
   - pattern: {fileID: 17149305639193433, guid: 278c9ff2b08974a42ad4dbf4a17ef781, type: 3}
     placeMin: 0
     placeMax: 0
-    cooldown: 20
+    leadDistance: 40
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5557805119664685450, guid: 6f34d1e2bbfaf774890f9186bfb6d0df, type: 3}
       propertyPath: accelaration
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5557805119664685451, guid: 6f34d1e2bbfaf774890f9186bfb6d0df, type: 3}
       propertyPath: m_Drag

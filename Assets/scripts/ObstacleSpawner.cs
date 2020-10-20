@@ -11,6 +11,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float cooldown = 0.0f;
     private Vector3 lastPos;
     private float distanceTraveled;
+    private Obstacle choosenObstacle;
 
     void Update()
     {
@@ -23,22 +24,31 @@ public class ObstacleSpawner : MonoBehaviour
         lastPos = transform.position;
         transform.position = new Vector3(0, 0, player.position.z + offset);
 
-        if (distanceTraveled >= cooldown)
+        if (choosenObstacle == null)
         {
-            cooldown = PlaceObstacle();
+            choosenObstacle = ChooseObstacle();
+        }
+        else if (distanceTraveled >= choosenObstacle.leadDistance)
+        {
+            PlaceObstacle(choosenObstacle);
+            choosenObstacle = null;
             distanceTraveled = 0.0f;
         }
     }
 
-    float PlaceObstacle()
+    void PlaceObstacle(Obstacle obstacle)
     {
-        int obsIndex = Random.Range(0, obstacles.Length);
-        Obstacle obstacle = obstacles[obsIndex];
         int obsX = Random.Range(obstacle.placeMin, obstacle.placeMax + 1);
         Vector3 obsPos = new Vector3(obsX, 0, transform.position.z);
 
         Instantiate(obstacle.pattern, obsPos, Quaternion.identity);
-        
-        return obstacle.cooldown;
+    }
+
+    Obstacle ChooseObstacle()
+    {
+        int obsIndex = Random.Range(0, obstacles.Length);
+        Obstacle obstacle = obstacles[obsIndex];
+
+        return obstacle;
     }
 }
