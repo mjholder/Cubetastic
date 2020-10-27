@@ -8,10 +8,11 @@ public class ObstacleSpawner : MonoBehaviour
     public int offset;
     public Obstacle[] obstacles;
     
-    private float cooldown = 0.0f;
+    //private float cooldown = 0.0f;
     private Vector3 lastPos;
     private float distanceTraveled;
     private Obstacle choosenObstacle;
+    private Obstacle lastObstacle;
 
     void Update()
     {
@@ -24,13 +25,20 @@ public class ObstacleSpawner : MonoBehaviour
         lastPos = transform.position;
         transform.position = new Vector3(0, 0, player.position.z + offset);
 
+        if (lastObstacle == null)
+        {
+            lastObstacle = new Obstacle();
+            lastObstacle.depth = 0f;
+        }
+
         if (choosenObstacle == null)
         {
             choosenObstacle = ChooseObstacle();
         }
-        else if (distanceTraveled >= choosenObstacle.leadDistance)
+        else if (distanceTraveled >= choosenObstacle.leadDistance + lastObstacle.depth)
         {
             PlaceObstacle(choosenObstacle);
+            lastObstacle = choosenObstacle;
             choosenObstacle = null;
             distanceTraveled = 0.0f;
         }

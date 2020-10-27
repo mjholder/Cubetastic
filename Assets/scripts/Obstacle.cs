@@ -9,4 +9,5 @@ public class Obstacle
     public int placeMin;
     public int placeMax;
     public float leadDistance;
+    public float depth;
 }
