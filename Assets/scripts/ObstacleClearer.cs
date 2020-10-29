@@ -8,7 +8,7 @@ public class ObstacleClearer : MonoBehaviour
     {
         if (collision.tag == "Obstacle")
         {
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject.transform.root.gameObject);
         }
     }
 }
