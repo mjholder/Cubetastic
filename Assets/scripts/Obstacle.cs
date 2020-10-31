@@ -8,5 +8,6 @@ public class Obstacle
     public GameObject pattern;
     public int placeMin;
     public int placeMax;
-    public float cooldown;
+    public float leadDistance;
+    public float depth;
 }

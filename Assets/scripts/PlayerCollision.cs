@@ -12,6 +12,8 @@ public class PlayerCollision : MonoBehaviour
         {
             movement.enabled = false;
             //FindObjectOfType<GameManager>().EndGame(); FOR NORMAL MODE
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
+
             FindObjectOfType<GameManager>().CompleteLevel();
         }
     }
