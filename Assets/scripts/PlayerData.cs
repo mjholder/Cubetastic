@@ -10,7 +10,7 @@ public class PlayerData
 
     public PlayerData(GameManager player)
     {
-        highScore = player.highScore;
-        thisScore = player.currentScoreInt;
+        highScore = player.GetHighScore();
+        thisScore = player.GetCurrentScore();
     }
 }

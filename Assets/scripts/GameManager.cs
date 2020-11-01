@@ -9,13 +9,9 @@ public class GameManager : MonoBehaviour
     bool gameHasEnded = false;
     public float restartDelay = 1f;
     public GameObject completeLevelUI;
-    public GameObject menuHighScoreText;
-    public GameObject menuCurrentScoreText;
-    public Score currentScore;
-    public bool mainMenu;
-    public bool endMenu;
-    public int highScore;
-    public int currentScoreInt;
+    public Score score;
+    private int highScore;
+    private int currentScore;
 
     void Start()
     {
@@ -24,11 +20,11 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        currentScoreInt = currentScore.scoreInt;
+        currentScore = score.scoreInt;
 
-        if (currentScoreInt > highScore)
+        if (currentScore > highScore)
         {
-            highScore = currentScoreInt;
+            highScore = currentScore;
         }
 
         Save();
@@ -58,20 +54,22 @@ public class GameManager : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
         highScore = data.highScore;
-        if (mainMenu)
-        {
-            menuHighScoreText.GetComponent<Text>().text = highScore.ToString();
-            if (endMenu)
-            {
-                currentScoreInt = data.thisScore;
-                menuCurrentScoreText.GetComponent<Text>().text = currentScoreInt.ToString();
-            }
-        }
+        currentScore = data.thisScore;
     }
 
     IEnumerator loadLevel()
     {
         yield return new WaitForSeconds(1);
         completeLevelUI.GetComponent<LevelComplete>().LoadNextLevel();
+    }
+
+    public int GetHighScore()
+    {
+        return highScore;
+    }
+
+    public int GetCurrentScore()
+    {
+        return currentScore;
     }
 }
