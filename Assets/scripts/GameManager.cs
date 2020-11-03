@@ -9,13 +9,14 @@ public class GameManager : MonoBehaviour
     bool gameHasEnded = false;
     public float restartDelay = 1f;
     public GameObject completeLevelUI;
-    public Score score;
+    public Score score; // Score is attached to the score display in game
     private int highScore;
     private int currentScore;
+    private int levelToLoad;
 
     void Start()
     {
-        Load();
+        LoadData();
     }
 
     public void CompleteLevel()
@@ -27,8 +28,8 @@ public class GameManager : MonoBehaviour
             highScore = currentScore;
         }
 
-        Save();
-        StartCoroutine(loadLevel());
+        SaveData();
+        StartCoroutine(LoadEnd());
     }
 
     public void EndGame()
@@ -45,22 +46,30 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Save()
+    public void SaveData()
     {
         SaveSystem.SaveScore(this);
     }
 
-    public void Load()
+    public void LoadData()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
+        PlayerData data = SaveSystem.LoadData();
         highScore = data.highScore;
         currentScore = data.thisScore;
     }
 
-    IEnumerator loadLevel()
+    public void LoadLevel()
+    {
+        if (levelToLoad != 0)
+        {
+            SceneManager.LoadScene(levelToLoad);
+        }
+    }
+
+    IEnumerator LoadEnd()
     {
         yield return new WaitForSeconds(1);
-        completeLevelUI.GetComponent<LevelComplete>().LoadNextLevel();
+        completeLevelUI.GetComponent<LevelComplete>().LoadEndScreen();
     }
 
     public int GetHighScore()
@@ -71,5 +80,20 @@ public class GameManager : MonoBehaviour
     public int GetCurrentScore()
     {
         return currentScore;
+    }
+
+    public void SetLevelToLoad(int level)
+    {
+        levelToLoad = level;
+    }
+
+    public int GetLevelToLoad()
+    {
+        return levelToLoad;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

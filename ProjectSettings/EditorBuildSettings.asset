@@ -21,11 +21,17 @@ EditorBuildSettings:
     path: Assets/Scenes/End.unity
     guid: 3bb28b7f44852ec4b91f33c6ee1bbc1e
   - enabled: 1
+    path: Assets/Scenes/WelcomeInfinite.unity
+    guid: ef0d96a71af79bb41b920bbcee956e2c
+  - enabled: 1
     path: Assets/Scenes/MainMenuInfinite.unity
     guid: 24cd4dddec87372478fb84ca9ba85248
   - enabled: 1
     path: Assets/Scenes/LevelInfinite.unity
     guid: 8b1d93b94ea112b49a7fe269ea7722b6
+  - enabled: 1
+    path: Assets/Scenes/LevelInfiniteSloped.unity
+    guid: 07d0086aa20b28946bdf1f0b68c92a6c
   - enabled: 1
     path: Assets/Scenes/EndInfinite.unity
     guid: a9a982594cb4c964fb067e4c9135219f

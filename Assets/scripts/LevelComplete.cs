@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
-    public void LoadNextLevel()
+    public void LoadEndScreen()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(4);
     }
 }

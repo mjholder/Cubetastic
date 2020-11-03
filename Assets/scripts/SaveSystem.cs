@@ -18,7 +18,7 @@ public static class SaveSystem
         stream.Close();
     }
 
-    public static PlayerData LoadPlayer()
+    public static PlayerData LoadData()
     {
         string path = Application.persistentDataPath + "/player.score";
         if (File.Exists(path))
