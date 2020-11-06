@@ -2,9 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Credits : MonoBehaviour
 {
+    public int levelIndex;
+    public Text highScoreText;
+    public Text thisScoreText;
+    public GameManager gameManager;
+
+    private void Start()
+    {
+        highScoreText.text = gameManager.GetHighScore().ToString();
+        thisScoreText.text = gameManager.GetCurrentScore().ToString();
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.Space))

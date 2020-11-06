@@ -6,21 +6,21 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    public static void SaveScore(GameManager player)
+     public static void SaveScore(GameManager gameManager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.score";
+        string path = Application.persistentDataPath + "/player.score." + gameManager.GetGameVersion();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(player);
+        PlayerData data = new PlayerData(gameManager, gameManager.GetLevelToLoad());
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static PlayerData LoadData()
+    public static PlayerData LoadData(GameManager gameManager)
     {
-        string path = Application.persistentDataPath + "/player.score";
+        string path = Application.persistentDataPath + "/player.score." + gameManager.GetGameVersion();
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
