@@ -91,12 +91,12 @@ public class GameManager : MonoBehaviour
 
     public int GetHighScore()
     {
-        return highScore;
+        return highScores[currentLevelIndex];
     }
 
     public int GetCurrentScore()
     {
-        return currentScore;
+        return currentScores[currentLevelIndex];
     }
 
     public int[] GetHighScores()

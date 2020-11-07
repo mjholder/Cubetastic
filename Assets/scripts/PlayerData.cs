@@ -5,12 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    public int lastLevelPlayed;
     public int[] highScores;
     public int[] thisScores;
 
-    public PlayerData(GameManager player)
+    public PlayerData(GameManager gameManager)
     {
-        highScores = player.GetHighScores();
-        thisScores = player.GetCurrentScores();
+        lastLevelPlayed = gameManager.GetLevelIndex();
+        highScores = gameManager.GetHighScores();
+        thisScores = gameManager.GetCurrentScores();
     }
 }
