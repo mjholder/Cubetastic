@@ -12,7 +12,7 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/player.score." + gameManager.GetGameVersion();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(gameManager, gameManager.GetLevelToLoad());
+        PlayerData data = new PlayerData(gameManager);
 
         formatter.Serialize(stream, data);
         stream.Close();

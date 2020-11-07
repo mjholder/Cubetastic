@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     private int[] currentScores;
     private int levelToLoad;
 
+    [SerializeField]
+    private int currentLevelIndex;
+
     void Start()
     {
         LoadData();
@@ -51,14 +54,25 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
+        highScores[currentLevelIndex] = highScore;
+        currentScores[currentLevelIndex] = currentScore;
         SaveSystem.SaveScore(this);
     }
 
     public void LoadData()
     {
         PlayerData data = SaveSystem.LoadData(this);
-        highScore = data.highScore[levelToLoad];
-        currentScore = data.thisScore[levelToLoad];
+        if (data != null)
+        {
+            highScores = data.highScores;
+            currentScores = data.thisScores;
+            highScore = highScores[currentLevelIndex];
+        }
+        else
+        {
+            highScores = new int[2];
+            currentScores = new int[2];
+        }
     }
 
     public void LoadLevel()
@@ -103,6 +117,16 @@ public class GameManager : MonoBehaviour
     public int GetLevelToLoad()
     {
         return levelToLoad;
+    }
+
+    public void SetLevelIndex(int level)
+    {
+        currentLevelIndex = level;
+    }
+
+    public int GetLevelIndex()
+    {
+        return currentLevelIndex;
     }
 
     public string GetGameVersion()

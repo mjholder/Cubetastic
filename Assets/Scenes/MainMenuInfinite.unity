@@ -926,6 +926,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6252549284137710117, guid: e22fde8247ef24f408b04b37470cd206, type: 3}
       propertyPath: levelIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6252549284137710117, guid: e22fde8247ef24f408b04b37470cd206, type: 3}
+      propertyPath: sceneIndex
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6252549284137710120, guid: e22fde8247ef24f408b04b37470cd206, type: 3}
@@ -1761,6 +1765,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1145851538}
     m_Modifications:
+    - target: {fileID: 6252549284137710117, guid: e22fde8247ef24f408b04b37470cd206, type: 3}
+      propertyPath: sceneIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6252549284137710117, guid: e22fde8247ef24f408b04b37470cd206, type: 3}
+      propertyPath: levelIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252549284137710120, guid: e22fde8247ef24f408b04b37470cd206, type: 3}
       propertyPath: m_Name
       value: Level01
