@@ -2,9 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Credits : MonoBehaviour
 {
+    public int levelIndex;
+    public Text highScoreText;
+    public Text thisScoreText;
+    public GameManager gameManager;
+
+    private void Start()
+    {
+        levelIndex = gameManager.GetLevelIndex();
+        highScoreText.text = gameManager.GetHighScores()[levelIndex].ToString();
+        thisScoreText.text = gameManager.GetCurrentScores()[levelIndex].ToString();
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -20,11 +33,11 @@ public class Credits : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(gameManager.GetLevelToLoad());
     }
 }

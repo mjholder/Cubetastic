@@ -9,30 +9,33 @@ public class GameManager : MonoBehaviour
     bool gameHasEnded = false;
     public float restartDelay = 1f;
     public GameObject completeLevelUI;
-    public GameObject menuHighScoreText;
-    public GameObject menuCurrentScoreText;
-    public Score currentScore;
-    public bool mainMenu;
-    public bool endMenu;
-    public int highScore;
-    public int currentScoreInt;
+    public Score score; // Score is attached to the score display in game
+    private string gameVersion = "0.0.5";
+    private int highScore;
+    private int[] highScores;
+    private int currentScore;
+    private int[] currentScores;
+    private static int levelToLoad;
+
+    [SerializeField]
+    private static int currentLevelIndex;
 
     void Start()
     {
-        Load();
+        LoadData();
     }
 
     public void CompleteLevel()
     {
-        currentScoreInt = currentScore.scoreInt;
+        currentScore = score.scoreInt;
 
-        if (currentScoreInt > highScore)
+        if (currentScore > highScore)
         {
-            highScore = currentScoreInt;
+            highScore = currentScore;
         }
 
-        Save();
-        StartCoroutine(loadLevel());
+        SaveData();
+        StartCoroutine(LoadEnd());
     }
 
     public void EndGame()
@@ -49,29 +52,90 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Save()
+    public void SaveData()
     {
+        highScores[currentLevelIndex] = highScore;
+        currentScores[currentLevelIndex] = currentScore;
         SaveSystem.SaveScore(this);
     }
 
-    public void Load()
+    public void LoadData()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
-        highScore = data.highScore;
-        if (mainMenu)
+        PlayerData data = SaveSystem.LoadData(this);
+        if (data != null)
         {
-            menuHighScoreText.GetComponent<Text>().text = highScore.ToString();
-            if (endMenu)
-            {
-                currentScoreInt = data.thisScore;
-                menuCurrentScoreText.GetComponent<Text>().text = currentScoreInt.ToString();
-            }
+            highScores = data.highScores;
+            currentScores = data.thisScores;
+            highScore = highScores[currentLevelIndex];
+        }
+        else
+        {
+            highScores = new int[2];
+            currentScores = new int[2];
         }
     }
 
-    IEnumerator loadLevel()
+    public void LoadLevel()
+    {
+        if (levelToLoad != 0)
+        {
+            SceneManager.LoadScene(levelToLoad);
+        }
+    }
+
+    IEnumerator LoadEnd()
     {
         yield return new WaitForSeconds(1);
-        completeLevelUI.GetComponent<LevelComplete>().LoadNextLevel();
+        completeLevelUI.GetComponent<LevelComplete>().LoadEndScreen();
+    }
+
+    public int GetHighScore()
+    {
+        return highScores[currentLevelIndex];
+    }
+
+    public int GetCurrentScore()
+    {
+        return currentScores[currentLevelIndex];
+    }
+
+    public int[] GetHighScores()
+    {
+        return highScores;
+    }
+
+    public int[] GetCurrentScores()
+    {
+        return currentScores;
+    }
+
+    public void SetLevelToLoad(int level)
+    {
+        levelToLoad = level;
+    }
+
+    public int GetLevelToLoad()
+    {
+        return levelToLoad;
+    }
+
+    public void SetLevelIndex(int level)
+    {
+        currentLevelIndex = level;
+    }
+
+    public int GetLevelIndex()
+    {
+        return currentLevelIndex;
+    }
+
+    public string GetGameVersion()
+    {
+        return gameVersion;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
