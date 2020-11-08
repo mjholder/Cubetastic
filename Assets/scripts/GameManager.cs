@@ -15,10 +15,10 @@ public class GameManager : MonoBehaviour
     private int[] highScores;
     private int currentScore;
     private int[] currentScores;
-    private int levelToLoad;
+    private static int levelToLoad;
 
     [SerializeField]
-    private int currentLevelIndex;
+    private static int currentLevelIndex;
 
     void Start()
     {

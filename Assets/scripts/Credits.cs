@@ -13,8 +13,9 @@ public class Credits : MonoBehaviour
 
     private void Start()
     {
-        highScoreText.text = gameManager.GetHighScore().ToString();
-        thisScoreText.text = gameManager.GetCurrentScore().ToString();
+        levelIndex = gameManager.GetLevelIndex();
+        highScoreText.text = gameManager.GetHighScores()[levelIndex].ToString();
+        thisScoreText.text = gameManager.GetCurrentScores()[levelIndex].ToString();
     }
 
     private void Update()
@@ -32,11 +33,11 @@ public class Credits : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(gameManager.GetLevelToLoad());
     }
 }

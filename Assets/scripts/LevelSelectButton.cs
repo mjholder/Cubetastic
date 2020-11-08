@@ -6,10 +6,13 @@ public class LevelSelectButton : MonoBehaviour
 {
     public int sceneIndex;
     public int levelIndex;
+    public Menu menu;
 
     public void SetLevel()
     {
-        GameObject.FindObjectOfType<GameManager>().SetLevelToLoad(sceneIndex);
-        GameObject.FindObjectOfType<GameManager>().SetLevelIndex(levelIndex);
+        GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
+        gameManager.SetLevelToLoad(sceneIndex);
+        gameManager.SetLevelIndex(levelIndex);
+        menu.SetHighScore(gameManager.GetHighScores()[levelIndex]);
     }
 }
