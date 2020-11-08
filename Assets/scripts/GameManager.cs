@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
+        if (highScores == null || currentScores == null)
+        {
+            highScores = new int[2];
+            currentScores = new int[2];
+        }
         highScores[currentLevelIndex] = highScore;
         currentScores[currentLevelIndex] = currentScore;
         SaveSystem.SaveScore(this);
@@ -66,7 +71,10 @@ public class GameManager : MonoBehaviour
         {
             highScores = data.highScores;
             currentScores = data.thisScores;
-            highScore = highScores[currentLevelIndex];
+            if (highScores != null)
+            {
+                highScore = highScores[currentLevelIndex];
+            }
         }
         else
         {
