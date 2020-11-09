@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 public class Sound
 {
     public string name;
+    public string type;
 
     public AudioClip clip;
 

@@ -9,6 +9,9 @@ public class Menu : MonoBehaviour
     public Text highScoreText;
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public Slider musicVolumeSlider;
+    public InputField musicInputField;
+    private float volume;
 
     // depricated
     public void StartGmae()
@@ -41,12 +44,22 @@ public class Menu : MonoBehaviour
 
     public void Save()
     {
-
+        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
     public void SaveAndClose()
     {
         Save();
         CloseOptions();
+    }
+
+    public void ChangeVolumeSlider()
+    {
+        musicInputField.text = musicVolumeSlider.value.ToString();
+    }
+
+    public void ChangeVolumeInput()
+    {
+        musicVolumeSlider.value = musicInputField.text;
     }
 }

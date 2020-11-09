@@ -343,12 +343,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: PlayerDeath
+    type: Effect
     clip: {fileID: 8300000, guid: b27e8d3ebfe2d5243ae6a28b9b8577f6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Theme
+    type: Music
     clip: {fileID: 8300000, guid: a760c2b98db4a7d408df49795e3f0f0d, type: 3}
     volume: 0.1
     pitch: 1
