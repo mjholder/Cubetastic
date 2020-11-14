@@ -13,7 +13,8 @@ public static class Helper
         {
             if (inputChars[i] >= '0' && inputChars[i] <= '9')
             {
-                int temp = (inputChars[i] - '0') * (int)Mathf.Pow(10, i);
+                int temp = (inputChars[i] - '0') * (int)Mathf.Pow(10, inputChars.Length - i - 1);
+                output += temp;
             }
             else
             {

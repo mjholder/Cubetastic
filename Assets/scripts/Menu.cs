@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,6 +10,11 @@ public class Menu : MonoBehaviour
     public Slider musicVolumeSlider;
     public InputField musicInputField;
     private float volume;
+
+    private void Start()
+    {
+        volume = PlayerPrefs.GetFloat("MusicVolume");
+    }
 
     // depricated
     public void StartGmae()
@@ -34,6 +37,7 @@ public class Menu : MonoBehaviour
     {
         mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
+        musicVolumeSlider.value = volume;
     }
 
     public void CloseOptions()
@@ -44,7 +48,7 @@ public class Menu : MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetFloat("MusicVolume", volume);
+        PlayerPrefs.SetFloat("MusicVolume", (float)volume);
     }
 
     public void SaveAndClose()
@@ -53,13 +57,15 @@ public class Menu : MonoBehaviour
         CloseOptions();
     }
 
-    public void ChangeVolumeSlider()
+    public void OnChangeVolumeSlider()
     {
-        musicInputField.text = musicVolumeSlider.value.ToString();
+        volume = musicVolumeSlider.value;
+        musicInputField.text = volume.ToString();
     }
 
-    public void ChangeVolumeInput()
+    public void OnChangeVolumeInput()
     {
-        musicVolumeSlider.value = musicInputField.text;
+        volume = Mathf.Clamp(Helper.StringToInt(musicInputField.text), 0, 100);
+        musicVolumeSlider.value = volume;
     }
 }

@@ -31,7 +31,8 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             if (s.type == "Music")
             {
-                s.source.volume = PlayerPrefs.GetFloat("MusicVolume");
+                s.volume = PlayerPrefs.GetFloat("MusicVolume") / 100.0f;
+                s.source.volume = s.volume;
             }
             s.source.loop = s.loop;
         }
