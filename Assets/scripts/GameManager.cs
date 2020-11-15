@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 1f;
     public GameObject completeLevelUI;
     public Score score; // Score is attached to the score display in game
-    private string gameVersion = "0.0.5";
+    private string gameVersion = "0.0.6";
     private int highScore;
     private int[] highScores;
     private int currentScore;
