@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6aa874939683f74c9ff8394b86fae3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1005895178}
   offset: 75
   obstacles:
   - pattern: {fileID: 5941617804622513739, guid: 51278b1f717ae4d45921005a159e577f, type: 3}
@@ -461,6 +461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd144d1a1db4d584b9e74d2e0645d269, type: 3}
+--- !u!4 &1005895178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3348246786549119794, guid: b2d332002f04c304bb885d863e712934, type: 3}
+  m_PrefabInstance: {fileID: 576095356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1259874705
 GameObject:
   m_ObjectHideFlags: 0

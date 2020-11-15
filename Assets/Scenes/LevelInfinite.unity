@@ -982,6 +982,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 6807622727903303531, guid: b2d332002f04c304bb885d863e712934, type: 3}
+      propertyPath: characters.Array.data[1].index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807622727903303531, guid: b2d332002f04c304bb885d863e712934, type: 3}
+      propertyPath: characters.Array.data[2].index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807622727903303531, guid: b2d332002f04c304bb885d863e712934, type: 3}
+      propertyPath: characters.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 5876948835102562713, guid: 4d25aab48c464054caa32d3da0170500, type: 3}
+    - target: {fileID: 6807622727903303531, guid: b2d332002f04c304bb885d863e712934, type: 3}
+      propertyPath: characters.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 9036542631719567517, guid: 9cf819ce94b490549ba86c971295cf81, type: 3}
+    - target: {fileID: 6807622727903303531, guid: b2d332002f04c304bb885d863e712934, type: 3}
+      propertyPath: characters.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 7882956916618032863, guid: 39aeca828b8cffa4caa39cbc0077cc12, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2d332002f04c304bb885d863e712934, type: 3}
 --- !u!1001 &3693673345929678415

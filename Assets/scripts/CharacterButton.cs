@@ -4,5 +4,15 @@ using UnityEngine;
 
 public class CharacterButton : MonoBehaviour
 {
-    public string charPrefabName;
+    /* Character indexes:
+        O: Cube
+        1: Man
+        2: Corgi
+    */
+    public int characterIndex;
+
+    public void SetCharacter()
+    {
+        PlayerPrefs.SetInt("Character", characterIndex);
+    }
 }

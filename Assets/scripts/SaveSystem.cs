@@ -33,7 +33,8 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save File not found!");
+            Debug.LogWarning("Save File not found! Creating initial file.");
+            SaveScore(gameManager);
             return null;
         }
     }
