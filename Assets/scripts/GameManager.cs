@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     public Score score; // Score is attached to the score display in game
     private string gameVersion = "0.0.6";
     private int highScore;
-    private int[] highScores;
+    private static int[] highScores;
     private int currentScore;
-    private int[] currentScores;
+    private static int[] currentScores;
     private static int levelToLoad;
 
     [SerializeField]

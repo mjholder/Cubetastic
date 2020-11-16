@@ -10,7 +10,6 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.score." + gameManager.GetGameVersion();
-        Debug.Log(path);
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(gameManager);
@@ -22,7 +21,6 @@ public static class SaveSystem
     public static PlayerData LoadData(GameManager gameManager)
     {
         string path = Application.persistentDataPath + "/player.score." + gameManager.GetGameVersion();
-        Debug.Log(path);
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
