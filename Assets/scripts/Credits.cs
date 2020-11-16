@@ -13,6 +13,7 @@ public class Credits : MonoBehaviour
 
     private void Start()
     {
+        GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
         levelIndex = gameManager.GetLevelIndex();
         highScoreText.text = gameManager.GetHighScores()[levelIndex].ToString();
         thisScoreText.text = gameManager.GetCurrentScores()[levelIndex].ToString();
